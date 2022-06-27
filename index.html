@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <title>Good Weather</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Good Weather</h1>
+      <p>find out the weather in any place of the world</p>
+      <section class="citySearchArea">
+        <div class="row">
+          <div class="col-4">
+            <form id="cityEnterForm">
+              <input
+                class="form-control"
+                type="text"
+                id="city"
+                placeholder="Enter a city"
+                autocomplete="off"
+                autofocus="on"
+                aria-label="default input example"
+              />
+          </div>
+          <div class="col-4">
+              <button id="searchButton" type="button" class="btn btn-light" >
+                  Search 🔎
+                </button>
+          </form>
+          </div>
+      
+          <div class="col-4">
+            <button id="currentLocationButton" type="button" class="btn btn-light">
+              Current Location 📍
+            </button>
+          </div>
+        </div>
+        <div class="col-12">
+          <h1 id="cityCountry"><span id="currentCity"></span>, <span id="currentCountry"></span></h1>
+        </div>
+      </section>
+      <br />
+      <section class="dayWeatherArea">
+        <div class="row">
+          <div class="col-4">
+            <ul class="dateTime">
+              <li id="dayOfWeek" class="list-group-item">Day of week</li>
+              <li id="month" class="list-group-item">
+                MM DD, YYYY
+              </li>
+              <li id="time" class="list-group-item">00:00 am</li>
+              <li id="weatherDescription" class="list-group-item">Sunny</li>
+            </ul>
+          </div>
+
+          <div class="col-4">
+            <ul>
+              <li class="list-group-item">
+                <h2 id="currentTemperature">☀️ <span id="temperature">20</span>°<span class= cF id="celsius">C</span><span class=cF>|</span><span class=cF id="fahrenheits">F</span></h2>
+              </li>
+            </ul>
+          </div>
+          <div class="col-4">
+            <ul class="weatherIndexes">
+              <li  class="list-group-item">Feels like: <span id="feels-like">22</span>°</li>
+              <li class="list-group-item">Wind: <span id="wind">14 </span> m/sec</li>
+              <li class="list-group-item">Humidity: <span id="humidity">63</span>%</li>
+              
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-2"><strong>min <span id="min-temp">10</span>°</strong></div>
+          <div class="col-2">max <span id="max-temp">24</span>°</div>
+          <div class="col-4"></div>
+        </div>
+      </section>
+      <br />
+      <div class="row">
+        <div class="col-2">
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item dayOfWeek">Fri</li>
+              <li class="list-group-item">☀️</li>
+              <li class="list-group-item">
+                <span class="minT">13°</span> <span class="maxT">21°</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item dayOfWeek">Sat</li>
+              <li class="list-group-item">☁️</li>
+              <li class="list-group-item">
+                <span class="minT">12°</span> <span class="maxT">18°</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item dayOfWeek">Sun</li>
+              <li class="list-group-item">⛈</li>
+              <li class="list-group-item">
+                <span class="minT">13°</span> <span class="maxT">16°</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item dayOfWeek">Mon</li>
+              <li class="list-group-item">☀️</li>
+              <li class="list-group-item">
+                <span class="minT">14°</span> <span class="maxT">20°</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item dayOfWeek">Tue</li>
+              <li class="list-group-item">🌤</li>
+              <li class="list-group-item">
+                <span class="minT">17°</span> <span class="maxT">24°</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item dayOfWeek">Wed</li>
+              <li class="list-group-item">🌤</li>
+              <li class="list-group-item">
+                <span class="minT">13°</span> <span class="maxT">21°</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br />
+      <p>Coded by Olena Yalovol</p>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>
