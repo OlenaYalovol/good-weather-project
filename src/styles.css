@@ -75,7 +75,6 @@ p {
 }
 .card:hover {
   border: 3px solid #a7bcb9;
-  font-size: larger;
 }
 .list-group-item {
   border: none;
