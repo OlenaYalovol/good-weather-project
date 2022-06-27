@@ -122,7 +122,7 @@ search("Kharkiv");
 function celsiusToFahrenheits(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = "68°";
+  temperature.innerHTML = "68";
   document.getElementById("celsius").style.color = "grey";
   document.getElementById("fahrenheits").style.color = "black";
 }
@@ -130,7 +130,7 @@ function celsiusToFahrenheits(event) {
 function fahrenheitsToCelsius(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = "20°";
+  temperature.innerHTML = "20";
   document.getElementById("fahrenheits").style.color = "grey";
   document.getElementById("celsius").style.color = "black";
 }
