@@ -51,6 +51,7 @@ function updateCityCountryTemperature(response) {
   document.getElementById("temperature").innerHTML = Math.round(
     response.data.main.temp
   );
+  celsiusTemperature = response.data.main.temp;
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#currentCountry").innerHTML =
     response.data.sys.country;
@@ -109,6 +110,27 @@ function getWeatherDataByLocation(position) {
   }
 }
 
+// celsius vs fahrenheits conversion
+
+function celsiusToFahrenheits(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperature.innerHTML = Math.round(fahrenheitTemperature);
+  document.getElementById("celsius").style.color = "#0d6efd";
+  document.getElementById("fahrenheits").style.color = "black";
+}
+
+function fahrenheitsToCelsius(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  temperature.innerHTML = Math.round(celsiusTemperature);
+  document.getElementById("fahrenheits").style.color = "#0d6efd";
+  document.getElementById("celsius").style.color = "black";
+}
+
+let celsiusTemperature = null;
+
 // listening to the search form value
 let cityEnterField = document.querySelector("#cityEnterForm");
 cityEnterField.addEventListener("submit", getWeatherDataByCity);
@@ -124,28 +146,10 @@ document
 
 // initial search during page load
 
+// listening to click on F and C links
+let fahrenheitLink = document.querySelector("#fahrenheits");
+fahrenheitLink.addEventListener("click", celsiusToFahrenheits);
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", fahrenheitsToCelsius);
+
 search("Kharkiv");
-
-// celsius vs fahrenheits conversion
-
-function celsiusToFahrenheits(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = "68";
-  document.getElementById("celsius").style.color = "grey";
-  document.getElementById("fahrenheits").style.color = "black";
-}
-
-function fahrenheitsToCelsius(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temperature");
-  temperature.innerHTML = "20";
-  document.getElementById("fahrenheits").style.color = "grey";
-  document.getElementById("celsius").style.color = "black";
-}
-document
-  .getElementById("celsius")
-  .addEventListener("click", fahrenheitsToCelsius);
-document
-  .getElementById("fahrenheits")
-  .addEventListener("click", celsiusToFahrenheits);
