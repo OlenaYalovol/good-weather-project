@@ -52,6 +52,8 @@ function updateCityCountryTemperature(response) {
     response.data.main.temp
   );
   celsiusTemperature = response.data.main.temp;
+  document.getElementById("fahrenheits").style.color = "grey";
+  document.getElementById("celsius").style.color = "black";
   document.querySelector("#currentCity").innerHTML = response.data.name;
   document.querySelector("#currentCountry").innerHTML =
     response.data.sys.country;
@@ -117,7 +119,7 @@ function celsiusToFahrenheits(event) {
   let temperature = document.querySelector("#temperature");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperature.innerHTML = Math.round(fahrenheitTemperature);
-  document.getElementById("celsius").style.color = "#0d6efd";
+  document.getElementById("celsius").style.color = "grey";
   document.getElementById("fahrenheits").style.color = "black";
 }
 
@@ -125,7 +127,7 @@ function fahrenheitsToCelsius(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(celsiusTemperature);
-  document.getElementById("fahrenheits").style.color = "#0d6efd";
+  document.getElementById("fahrenheits").style.color = "grey";
   document.getElementById("celsius").style.color = "black";
 }
 
@@ -144,12 +146,11 @@ document
   .getElementById("currentLocationButton")
   .addEventListener("click", getWeatherDataByLocation);
 
-// initial search during page load
-
 // listening to click on F and C links
 let fahrenheitLink = document.querySelector("#fahrenheits");
 fahrenheitLink.addEventListener("click", celsiusToFahrenheits);
 let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", fahrenheitsToCelsius);
 
+// initial search during page load
 search("Kharkiv");
