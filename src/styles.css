@@ -10,6 +10,11 @@ p {
   font-family: "Courier New", Courier, monospace;
   text-align: center;
 }
+ul {
+  padding-left: 0cm;
+  margin-bottom: 0;
+}
+
 .container {
   max-width: 900px;
   font-size: 18px;
@@ -45,6 +50,7 @@ p {
 .dateTime {
   padding-inline-start: 0;
 }
+
 #currentTemperature {
   font-size: 80px;
   text-align: center;
@@ -65,9 +71,6 @@ p {
 .weatherIndexes {
   text-align: right;
   padding: 0 12px;
-}
-.col-2 {
-  text-align: center;
 }
 .card {
   text-align: center;
