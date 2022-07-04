@@ -45,6 +45,32 @@ if (currentMinutes < 10) {
 let time = document.querySelector("#time");
 time.innerHTML = currentHour + ":" + currentMinutes;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+          <div class="col-2">
+            <div class="card">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item dayOfWeek">${day}</li>
+                <li class="list-group-item">☀️</li>
+                <li class="list-group-item">
+                  <span class="minT">13°</span> <span class="maxT">21°</span>
+                </li>
+              </ul>
+          </div>
+        </div>
+        `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 // change weather information to current data for a particular city
 function updateCityCountryTemperature(response) {
   console.log(response.data);
@@ -149,3 +175,5 @@ celsiusLink.addEventListener("click", fahrenheitsToCelsius);
 
 // initial search during page load
 search("Kharkiv");
+
+displayForecast();
