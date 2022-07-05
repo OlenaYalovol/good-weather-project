@@ -143,6 +143,7 @@ function getWeatherDataByCity(event) {
   let city = document.querySelector("#city").value;
   event.preventDefault();
   search(city);
+  document.getElementById("cityEnterForm").reset();
 }
 
 // get weather data by geolocation when Current Location button is clicked
@@ -156,7 +157,7 @@ function getWeatherDataByLocation(position) {
     let apiKey = "666ce5aa06360eb1cfa62f046549c80e";
     let units = "metric";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-    axios.get(apiUrl).then(updateCityCountryTemperature);
+    axios.get(apiUrl).then(updateTodayWeatherData);
   }
 }
 
