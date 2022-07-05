@@ -59,18 +59,12 @@ ul {
   font-size: 80px;
   text-align: center;
 }
-#fahrenheits {
-  color: grey;
-}
+
 #weatherDescription {
   text-transform: capitalize;
 }
-.cF {
-  font-weight: lighter;
-  font-size: 40px;
-}
-.cF:hover {
-  cursor: pointer;
+.celsius {
+  font-size: 50px;
 }
 .weatherIndexes {
   text-align: right;
